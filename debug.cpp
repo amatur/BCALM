@@ -99,6 +99,7 @@ void createinputlm(int64_t lr,int k,const char *name){
 			}
 		}
 		kmer+=c;
+                out<<kmer<<";"<<endl;
 		if(kmer<reversecompletment(kmer)){
 			out<<kmer<<";"<<endl;
 		}
@@ -120,7 +121,7 @@ bool checkfile(string name1, string name2,int k){
 		getline(t1,line);
 		if(line.size()>2){
 			string node=line.substr(0,line.size()-1);
-			node=min(node,reversecompletment(node));
+			node=min(node,node);
 			s1.insert(make_pair(node,false));
 		}
 	}
@@ -128,7 +129,7 @@ bool checkfile(string name1, string name2,int k){
 		getline(t2,line);
 		if(line.size()>2){
 			string node=line.substr(0,line.size()-1);
-			node=min(node,reversecompletment(node));
+			node=min(node,node);
 			s2.insert(make_pair(node,false));
 		}
 	}
@@ -139,7 +140,7 @@ bool checkfile(string name1, string name2,int k){
 				lowfail++;
 				for(int i(0);i+k<=(int)str.size();i++){
 					kmer=str.substr(i,k);
-					kmer=min(kmer,reversecompletment(kmer));
+					kmer=min(kmer,kmer);
 					e2.insert(make_pair(kmer,false));
 				}
 			}
@@ -153,7 +154,7 @@ bool checkfile(string name1, string name2,int k){
 			lowfail++;
 			for(int i(0);i+k<=(int)str.size();i++){
 				kmer=str.substr(i,k);
-				kmer=min(kmer,reversecompletment(kmer));
+				kmer=min(kmer,kmer);
 				e1.insert(make_pair(kmer,false));
 			}
 		}

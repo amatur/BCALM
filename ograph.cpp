@@ -317,18 +317,7 @@ void graph::debruijn(){
 				neighbor[j->second].add(i,4);
 			}
 		}
-		it=(maprev.equal_range(key));
-		for(auto j(it.first);j!=it.second;j++)
-			if(adjacent(node,reversecompletment(nodes[j->second]),k)){
-				neighbor[i].add(j->second,2);
-				neighbor[j->second].add(i,2);
-			}
-		it=(map.equal_range(keyrc));
-		for(auto j(it.first);j!=it.second;j++)
-			if(adjacent(reversecompletment(node),nodes[j->second],k)){
-				neighbor[i].add(j->second,3);
-				neighbor[j->second].add(i,3);
-			}
+		
 	}
 	map.clear();
 }
@@ -719,4 +708,3 @@ unsigned char neighbour::removetype(unsigned char c){
 			list[i].first=0;
 	return 0;
 }
-
